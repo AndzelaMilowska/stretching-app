@@ -1,40 +1,30 @@
 import "./App.css";
 import { useState } from "react";
-
+import Timer from "./components/Timer";
+import { exercises } from "./assets/exercises";
 function App() {
+  const [indexOfExercise, setIndexOfExercise] = useState(0);
+  
   return (
     <>
-      <Timer durationTime={{ minutes: 0, seconds: 45 }} />
+
+      <h1>Stretching App</h1>
+
+  <p>{indexOfExercise+1} / {exercises.length}</p>
+<p>{exercises[indexOfExercise].leg}</p>
+
+<img src={exercises[indexOfExercise].exercise} alt="Exercise" className="exerciseImg"/>
+      <Timer
+        durationTime={45}
+        setIndexOfExercise={setIndexOfExercise}
+      />
+    
     </>
   );
 }
 
 export default App;
 
-interface DurationTime {
-  minutes: number;
-  seconds: number;
-}
 
-function Timer({ durationTime }: { durationTime: DurationTime }) {
-  const [isRunning, setIsRunning] = useState(false);
-  const [time, setTime] = useState({ minutes: durationTime.minutes, seconds: durationTime.seconds });
 
-  function resetTimer () {
-setTime({ minutes: durationTime.minutes, seconds: durationTime.seconds })
-  }
-  return (
-    <div>
-      <button onClick={() => setIsRunning(!isRunning)}>
-        {isRunning ? "Pause" : "Start"}
-      </button>
-      <button onClick={resetTimer}>Reset</button>
-      <button>Next</button>
-      <button>Previous</button>
 
-      <span>
-        {time.minutes}:{time.seconds}
-      </span>
-    </div>
-  );
-}

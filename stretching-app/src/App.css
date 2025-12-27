@@ -1,0 +1,68 @@
+.exerciseImg {
+  max-width: 300px;
+  height: auto;
+  margin: 20px 0;
+}
+
+/* Dark theme - centered layout and element styles */
+body {
+  background-color: #0f1724;
+  color: #e6eef8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+div {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-size: 2rem;
+  text-align: center;
+}
+
+p {
+  margin: 8px 0;
+  color: #cfe7ff;
+  text-align: center;
+}
+
+span {
+  color: #ffffff;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+}
+
+button {
+  background: #111827;
+  color: #f8fafc;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 6px;
+  transition: transform .08s ease, box-shadow .08s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+    
