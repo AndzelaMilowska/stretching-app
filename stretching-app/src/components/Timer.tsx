@@ -5,18 +5,19 @@ import TimerControls from "./TimerControls";
 import { exercises } from "../assets/exercises";
 import longBeepSound from "../assets/correct-beep_C_major.wav"
 import shortBeepSound from "../assets/correct-soft-beep_C_major.wav"
+import TimerSettings from "./TimerSettings";
 
 
 export default function Timer({
-  durationTime,
+  
   setIndexOfExercise,
 }: {
-  durationTime: number;
-  setIndexOfExercise: React.Dispatch<React.SetStateAction<number>>;
+    setIndexOfExercise: React.Dispatch<React.SetStateAction<number>>;
 }) {
+  const [durationTime, setDurationTime] = useState(45);
   const [time, setTime] = useState(durationTime);
   const [isRunning, setIsRunning] = useState(false);
-
+  const [timeSettings, setTimeSettings] = useState(false);
 
   const shortBeep = new Audio(shortBeepSound);
   const longBeep = new Audio(longBeepSound);
@@ -58,9 +59,12 @@ export default function Timer({
     return () => clearInterval(interval);
   }, [time, isRunning]);
 
+
+
   return (
     <div>
-      <span>{formatTime()}</span>
+      <span onClick={() => setTimeSettings(!timeSettings)} className="time-display">{formatTime()}</span>
+      {/* <TimerSettings durationTime={durationTime} setDurationTime={setDurationTime} /> */}
       <TimerControls
         resetTimer={resetTimer}
         isRunning={isRunning}

@@ -4,27 +4,21 @@ import Timer from "./components/Timer";
 import { exercises } from "./assets/exercises";
 function App() {
   const [indexOfExercise, setIndexOfExercise] = useState(0);
-  
+
   return (
     <>
-
       <h1>Stretching App</h1>
 
-  <p>{indexOfExercise+1} / {exercises.length}</p>
-<p>{exercises[indexOfExercise].leg}</p>
+      <p>
+        {indexOfExercise + 1} / {exercises.length}
+      </p>
+      <img src={exercises[indexOfExercise].exercise} alt="Exercise" className="exerciseImg" />
+            <p>{exercises[indexOfExercise].leg} leg</p>
 
-<img src={exercises[indexOfExercise].exercise} alt="Exercise" className="exerciseImg"/>
-      <Timer
-        durationTime={45}
-        setIndexOfExercise={setIndexOfExercise}
-      />
-    
+      <Timer setIndexOfExercise={setIndexOfExercise} />
+
     </>
   );
 }
 
 export default App;
-
-
-
-

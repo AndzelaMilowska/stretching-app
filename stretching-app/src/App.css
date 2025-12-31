@@ -36,6 +36,8 @@ p {
   margin: 8px 0;
   color: #cfe7ff;
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 span {
@@ -43,6 +45,7 @@ span {
   font-weight: 600;
   display: inline-block;
   text-align: center;
+    font-size: 1.5rem;
 }
 
 button {
@@ -53,6 +56,7 @@ button {
   border-radius: 8px;
   cursor: pointer;
   margin: 6px;
+  font-size: 1rem;
   transition: transform .08s ease, box-shadow .08s ease;
 }
 
@@ -65,4 +69,30 @@ button:active {
   transform: translateY(0);
 }
 
-    
+
+.time-display {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Make number inputs with class `timeInput` look like the span text */
+.timeInput {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  display: inline-block;
+  padding: 0;
+
+
+}
+
+/* Remove default spinner controls in webkit browsers */
+input.timeInput::-webkit-outer-spin-button,
+input.timeInput::-webkit-inner-spin-button {
+
+}
