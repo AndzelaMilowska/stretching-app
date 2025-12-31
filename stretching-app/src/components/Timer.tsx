@@ -3,18 +3,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import TimerControls from "./TimerControls";
 import { exercises } from "../assets/exercises";
-import longBeepSound from "../assets/correct-beep_C_major.wav"
-import shortBeepSound from "../assets/correct-soft-beep_C_major.wav"
+import longBeepSound from "../assets/correct-beep_C_major.wav";
+import shortBeepSound from "../assets/correct-soft-beep_C_major.wav";
 import TimerSettings from "./TimerSettings";
 
-
 export default function Timer({
-  
   setIndexOfExercise,
 }: {
-    setIndexOfExercise: React.Dispatch<React.SetStateAction<number>>;
+  setIndexOfExercise: React.Dispatch<React.SetStateAction<number>>;
 }) {
-  const [durationTime, setDurationTime] = useState(45);
+  const [durationTime, setDurationTime] = useState(75);
   const [time, setTime] = useState(durationTime);
   const [isRunning, setIsRunning] = useState(false);
   const [timeSettings, setTimeSettings] = useState(false);
@@ -26,9 +24,9 @@ export default function Timer({
     setTime(durationTime);
   }
 
-    function handleNext() {
+  function handleNext() {
     resetTimer();
-    setIndexOfExercise((prev) => (prev < exercises.length - 1 ? prev + 1 : prev ));
+    setIndexOfExercise((prev) => (prev < exercises.length - 1 ? prev + 1 : prev));
   }
 
   function formatTime() {
@@ -37,14 +35,12 @@ export default function Timer({
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   }
 
-
-  
   useEffect(() => {
     let interval: number | undefined;
-    //if time === 0 and exercises length === current exercise +1 -> STOP, GJ 
+    //if time === 0 and exercises length === current exercise +1 -> STOP, GJ
     if (time === 0) {
       longBeep.play();
-      handleNext()
+      handleNext();
     }
     if (time > 0 && time <= 3 && isRunning) {
       shortBeep.play();
@@ -59,12 +55,21 @@ export default function Timer({
     return () => clearInterval(interval);
   }, [time, isRunning]);
 
-
-
   return (
     <div>
-      <span onClick={() => setTimeSettings(!timeSettings)} className="time-display">{formatTime()}</span>
-      {/* <TimerSettings durationTime={durationTime} setDurationTime={setDurationTime} /> */}
+      {!timeSettings ? (
+        <span onClick={() => setTimeSettings(!timeSettings)} className="time-display">
+          {formatTime()}
+        </span>
+      ) : (
+        <TimerSettings
+          durationTime={durationTime}
+          setDurationTime={setDurationTime}
+          setTimeSettings={setTimeSettings}
+          setTime={setTime}
+        />
+      )}
+
       <TimerControls
         resetTimer={resetTimer}
         isRunning={isRunning}
